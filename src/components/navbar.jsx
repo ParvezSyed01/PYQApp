@@ -8,7 +8,7 @@ const Navbar = () => {
         
         {/* Logo */}
         <h1 className="text-2xl font-bold text-blue-600 tracking-wide">
-          PYQ
+          MyPYQ
         </h1>
 
         {/* Links */}

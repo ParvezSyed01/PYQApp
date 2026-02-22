@@ -29,6 +29,7 @@ const Home = () => {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,13 +43,15 @@ const Home = () => {
     } else {
       setForm({ ...form, [name]: value });
     }
+
+    setError("");
   };
 
   const handleSubmit = () => {
     const { branch, sem, subject, year } = form;
 
     if (!branch || !sem || !subject || !year) {
-      alert("Select all fields");
+      setError("Please select all fields.");
       return;
     }
 
@@ -57,9 +60,7 @@ const Home = () => {
     );
   };
 
-  // Dynamic Options
   const branches = Object.keys(academicData);
-
   const semesters = form.branch
     ? Object.keys(academicData[form.branch])
     : [];
@@ -75,80 +76,69 @@ const Home = () => {
       : [];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50">
 
-      {/* Hero Section */}
-      <div className="flex flex-col items-center justify-center text-center 
-                    px-4 py-16 sm:py-20 md:py-24 
-                    bg-white shadow">
+      {/* HERO SECTION */}
+      <div className="max-w-6xl mx-auto px-6 py-24 text-center">
 
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6">
-          Previous Year Question Papers
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+          MyPYQ
         </h1>
 
-        <p className="max-w-xl text-gray-600 text-sm sm:text-base md:text-lg mb-6 sm:mb-8">
-          Select your branch, semester, subject, and year to instantly
-          access previous year exam papers.
+        <p className="mt-4 text-lg sm:text-xl text-gray-600 font-medium">
+          From Engineers, For Engineers
         </p>
 
-        <button
-          onClick={() => setShowModal(true)}
-          className="w-full sm:w-auto bg-blue-600 text-white 
-                   px-6 py-3 rounded-lg text-base sm:text-lg 
-                   hover:bg-blue-700 transition"
-        >
-          Get Paper
-        </button>
+        <p className="mt-6 max-w-2xl mx-auto text-gray-500 text-base sm:text-lg">
+          A structured platform to access previous year question papers
+          without clutter, confusion, or distractions.
+        </p>
+
+        <div className="mt-10 flex justify-center gap-4 flex-col sm:flex-row">
+
+          <button
+            onClick={() => setShowModal(true)}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-semibold shadow-md transition"
+          >
+            Access Papers
+          </button>
+
+          <a
+            href="https://www.honestysoftwares.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-900 hover:bg-black text-white px-8 py-3 rounded-xl font-semibold transition"
+          >
+            About Honesty →
+          </a>
+
+        </div>
+
+        <p className="mt-10 text-sm text-gray-400">
+          MyPYQ by Honest
+        </p>
+
       </div>
 
-      {/* Features Section */}
-      <div className="py-12 sm:py-16 md:py-20 
-                    px-4 sm:px-6 
-                    max-w-6xl mx-auto 
-                    grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-
-        <div className="bg-white p-5 sm:p-6 rounded shadow text-center">
-          <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
-            Easy Navigation
-          </h2>
-          <p className="text-gray-600 text-sm sm:text-base">
-            Clean dropdown flow to quickly filter your required paper.
-          </p>
-        </div>
-
-        <div className="bg-white p-5 sm:p-6 rounded shadow text-center">
-          <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
-            Organized Structure
-          </h2>
-          <p className="text-gray-600 text-sm sm:text-base">
-            Papers sorted by branch, semester, subject, and year.
-          </p>
-        </div>
-
-        <div className="bg-white p-5 sm:p-6 rounded shadow text-center">
-          <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
-            Instant Access
-          </h2>
-          <p className="text-gray-600 text-sm sm:text-base">
-            No clutter. Select and view your required paper immediately.
-          </p>
-        </div>
-      </div>
-
-      {/* Modal */}
+      {/* MODAL */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center px-4">
-          <div className="bg-white 
-                        w-full max-w-md 
-                        p-5 sm:p-6 
-                        rounded-lg 
-                        space-y-4 shadow-lg">
+        <div
+          className="fixed inset-0 bg-black/40 flex items-center justify-center px-4"
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="bg-white w-full max-w-md p-6 rounded-xl space-y-4 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-xl font-semibold text-gray-800 text-center">
+              Select Details
+            </h2>
 
             <select
               name="branch"
               value={form.branch}
               onChange={handleChange}
-              className="w-full border p-2.5 rounded text-sm sm:text-base"
+              className="w-full border p-2.5 rounded"
             >
               <option value="">Select Branch</option>
               {branches.map((b) => (
@@ -163,7 +153,7 @@ const Home = () => {
               value={form.sem}
               onChange={handleChange}
               disabled={!form.branch}
-              className="w-full border p-2.5 rounded disabled:bg-gray-100 text-sm sm:text-base"
+              className="w-full border p-2.5 rounded disabled:bg-gray-100"
             >
               <option value="">Select Semester</option>
               {semesters.map((s) => (
@@ -178,7 +168,7 @@ const Home = () => {
               value={form.subject}
               onChange={handleChange}
               disabled={!form.sem}
-              className="w-full border p-2.5 rounded disabled:bg-gray-100 text-sm sm:text-base"
+              className="w-full border p-2.5 rounded disabled:bg-gray-100"
             >
               <option value="">Select Subject</option>
               {subjects.map((sub) => (
@@ -193,7 +183,7 @@ const Home = () => {
               value={form.year}
               onChange={handleChange}
               disabled={!form.subject}
-              className="w-full border p-2.5 rounded disabled:bg-gray-100 text-sm sm:text-base"
+              className="w-full border p-2.5 rounded disabled:bg-gray-100"
             >
               <option value="">Select Year</option>
               {years.map((y) => (
@@ -203,9 +193,13 @@ const Home = () => {
               ))}
             </select>
 
+            {error && (
+              <p className="text-sm text-red-500 text-center">{error}</p>
+            )}
+
             <button
               onClick={handleSubmit}
-              className="w-full bg-green-600 text-white py-2.5 rounded hover:bg-green-700 transition"
+              className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg transition font-medium"
             >
               View Paper
             </button>
@@ -216,11 +210,13 @@ const Home = () => {
             >
               Cancel
             </button>
+
           </div>
         </div>
       )}
+
     </div>
- );
+  );
 };
 
 export default Home;
