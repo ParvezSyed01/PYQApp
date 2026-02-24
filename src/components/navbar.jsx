@@ -1,96 +1,87 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Home, Info, Phone } from "lucide-react";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
-  ];
-
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 animate-fadeIn">
-      
-      {/* Desktop Navbar */}
-      <div className="hidden md:flex justify-center pt-6">
-        <div className="w-full max-w-6xl bg-white/70 backdrop-blur-xl border border-gray-200 shadow-xl rounded-2xl px-8 py-4 flex justify-between items-center transition-all duration-300 hover:shadow-2xl">
-          
-          {/* Logo */}
-          <h1 className="text-2xl font-extrabold tracking-tight text-[#2563eb] hover:scale-105 transition duration-300 cursor-pointer">
+    <>
+      {/* ================= DESKTOP NAV ================= */}
+      <nav className="hidden md:flex fixed top-0 left-0 w-full z-50 justify-center pt-6">
+        <div className="w-full max-w-6xl bg-white/70 backdrop-blur-xl border border-gray-200 shadow-xl rounded-2xl px-8 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-extrabold text-[#2563eb]">
             My<span className="text-black">PYQ</span>
           </h1>
 
-          {/* Links */}
-          <div className="flex items-center gap-8 text-sm font-semibold">
-            {navItems.map(({ path, label }) => (
-              <NavLink
-                key={path}
-                to={path}
-                className={({ isActive }) =>
-                  `relative px-3 py-2 transition-all duration-300 ${
-                    isActive
-                      ? "text-blue-600"
-                      : "text-gray-600 hover:text-blue-600"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {label}
-                    <span
-                      className={`absolute left-0 -bottom-1 h-[2px] bg-blue-600 transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    />
-                  </>
-                )}
-              </NavLink>
-            ))}
+          <div className="flex gap-8 text-sm font-semibold">
+            <NavLink to="/" className="text-gray-600 hover:text-blue-600 transition">
+              Home
+            </NavLink>
+            <NavLink to="/about" className="text-gray-600 hover:text-blue-600 transition">
+              About
+            </NavLink>
+            <NavLink to="/contact" className="text-gray-600 hover:text-blue-600 transition">
+              Contact
+            </NavLink>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Navbar */}
-      <div className="flex md:hidden justify-between items-center px-6 py-4 bg-white shadow-md backdrop-blur-lg">
-        <h1 className="text-xl font-extrabold text-[#2563eb]">
-          My<span className="text-black">PYQ</span>
-        </h1>
+{/* ================= MOBILE TOP LOGO ================= */}
+<div className="md:hidden fixed top-4 left-1/2 -translate-x-1/2 z-50">
+  <div className="px-6 py-2 
+                  bg-white/90 backdrop-blur-md
+                  border border-gray-200
+                  shadow-lg
+                  rounded-xl">
+    <h1 className="text-xl font-extrabold tracking-tight text-[#2563eb]">
+      My<span className="text-black">PYQ</span>
+    </h1>
+  </div>
+</div>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="transition-transform duration-300"
-        >
-          {open ? (
-            <X size={26} className="rotate-180 transition-transform duration-300" />
-          ) : (
-            <Menu size={26} className="transition-transform duration-300" />
-          )}
-        </button>
-      </div>
+      {/* ================= MOBILE BOTTOM NAV ================= */}
+      <nav className="md:hidden fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-lg">
+        <div className="flex justify-around items-center h-16">
 
-      {/* Mobile Dropdown */}
-      <div
-        className={`md:hidden bg-white shadow-md px-6 overflow-hidden transition-all duration-500 ${
-          open ? "max-h-60 py-4 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="space-y-4 font-semibold">
-          {navItems.map(({ path, label }) => (
-            <NavLink
-              key={path}
-              to={path}
-              onClick={() => setOpen(false)}
-              className="block text-gray-700 hover:text-blue-600 transition"
-            >
-              {label}
-            </NavLink>
-          ))}
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `flex flex-col items-center text-xs ${
+                isActive ? "text-blue-600" : "text-gray-500"
+              }`
+            }
+          >
+            <Home size={22} />
+            <span className="mt-1">Home</span>
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `flex flex-col items-center text-xs ${
+                isActive ? "text-blue-600" : "text-gray-500"
+              }`
+            }
+          >
+            <Info size={22} />
+            <span className="mt-1">About</span>
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `flex flex-col items-center text-xs ${
+                isActive ? "text-blue-600" : "text-gray-500"
+              }`
+            }
+          >
+            <Phone size={22} />
+            <span className="mt-1">Contact</span>
+          </NavLink>
+
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 
