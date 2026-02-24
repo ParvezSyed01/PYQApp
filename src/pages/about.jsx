@@ -1,65 +1,144 @@
 import React from "react";
+import {
+  Search,
+  Layers,
+  Clock,
+  Target,
+  ShieldCheck,
+  BookOpen,
+} from "lucide-react";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f8fafc]">
+      <div className="max-w-6xl mx-auto px-6 py-24">
 
-      <div className="max-w-5xl mx-auto px-6 py-20">
+        {/* Hero Section */}
+        <div className="text-center">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#0f172a] tracking-tight">
+            About MyPYQ
+          </h1>
 
-        {/* Heading */}
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 text-center">
-          About MyPYQ
-        </h1>
-
-        <p className="mt-6 text-center text-gray-600 text-lg max-w-3xl mx-auto">
-          MyPYQ is a structured platform designed to help engineering students
-          access previous year question papers in a simple and organized way.
-        </p>
-
-        {/* Section 1 */}
-        <div className="mt-16 space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800">
-            Why This Platform Exists
-          </h2>
-
-          <p className="text-gray-600 leading-relaxed">
-            Many students struggle to find reliable previous year question papers.
-            Files are scattered, links are broken, and information is unstructured.
-            MyPYQ solves this by organizing papers based on branch, semester,
-            subject, and year — making preparation straightforward.
+          <p className="mt-8 text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+            A structured academic system engineered to eliminate
+            inefficiency in accessing previous year examination papers.
           </p>
         </div>
 
-        {/* Section 2 */}
-        <div className="mt-14 space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800">
-            What Makes It Different
-          </h2>
+        {/* Problem + Solution */}
+        <div className="mt-24 grid md:grid-cols-2 gap-16 items-center">
 
-          <ul className="space-y-4 text-gray-600">
-            <li>• Clear academic structure (Branch → Semester → Subject → Year)</li>
-            <li>• No cluttered interface</li>
-            <li>• No unnecessary distractions</li>
-            <li>• Built with simplicity and transparency in mind</li>
-          </ul>
+          {/* Problem */}
+          <div>
+            <div className="flex items-center gap-3">
+              <Search className="text-blue-600" size={28} />
+              <h2 className="text-2xl font-bold text-[#0f172a]">
+                The Problem
+              </h2>
+            </div>
+
+            <p className="mt-6 text-gray-600 leading-relaxed">
+              Question papers are scattered across random drives,
+              WhatsApp groups, and unstructured folders. Finding
+              the right paper wastes time and focus.
+            </p>
+
+            <p className="mt-4 text-gray-600 leading-relaxed">
+              During exam season, inefficiency compounds.
+              Disorganization becomes a real disadvantage.
+            </p>
+          </div>
+
+          {/* Solution Card */}
+          <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-200 hover:shadow-2xl transition duration-300">
+            <div className="flex items-center gap-3">
+              <Layers className="text-blue-600" size={26} />
+              <h3 className="text-xl font-semibold text-[#0f172a]">
+                Structured Retrieval System
+              </h3>
+            </div>
+
+            <ul className="mt-6 space-y-4 text-gray-600">
+              <li>• Branch → Semester → Subject → Year</li>
+              <li>• Clean categorization</li>
+              <li>• Direct access within seconds</li>
+              <li>• No unnecessary friction</li>
+            </ul>
+          </div>
         </div>
 
-        {/* Section 3 */}
-        <div className="mt-14 space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800">
-            Built With Honesty
+        {/* Why Use MyPYQ */}
+        <div className="mt-28">
+          <h2 className="text-2xl font-bold text-center text-[#0f172a]">
+            Why You Should Use MyPYQ
           </h2>
 
-          <p className="text-gray-600 leading-relaxed">
-            MyPYQ is developed under the principle of honesty — providing students
-            with what they need without manipulation or noise. The goal is to make
-            academic preparation cleaner and more accessible.
+          <div className="mt-14 grid md:grid-cols-3 gap-10">
+
+            {/* Card 1 */}
+            <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-200 hover:-translate-y-2 hover:shadow-xl transition duration-300">
+              <Clock className="text-blue-600" size={26} />
+              <h3 className="mt-4 font-semibold text-lg text-[#0f172a]">
+                Save Time
+              </h3>
+              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                Stop searching endlessly. Retrieve papers instantly
+                and focus on preparation.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-200 hover:-translate-y-2 hover:shadow-xl transition duration-300">
+              <Target className="text-blue-600" size={26} />
+              <h3 className="mt-4 font-semibold text-lg text-[#0f172a]">
+                Study Smart
+              </h3>
+              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                Identify recurring patterns and optimize your
+                revision strategy.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-200 hover:-translate-y-2 hover:shadow-xl transition duration-300">
+              <ShieldCheck className="text-blue-600" size={26} />
+              <h3 className="mt-4 font-semibold text-lg text-[#0f172a]">
+                Reliable Structure
+              </h3>
+              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
+                Built with clarity and integrity. Organized
+                for long-term academic utility.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Philosophy */}
+        <div className="mt-28 text-center max-w-3xl mx-auto">
+          <div className="flex justify-center">
+            <BookOpen className="text-blue-600" size={30} />
+          </div>
+
+          <h2 className="mt-6 text-2xl font-bold text-[#0f172a]">
+            Built by Engineers, for Engineers
+          </h2>
+
+          <p className="mt-8 text-gray-600 leading-relaxed">
+            Designed with a practical engineering mindset —
+            eliminate noise, optimize systems, and create tools
+            that genuinely improve workflow.
+          </p>
+
+          <p className="mt-6 text-gray-600 leading-relaxed">
+            A product of Honesty Software — focused on clarity,
+            integrity, and measurable utility.
           </p>
         </div>
 
-        {/* Footer Line */}
-        <div className="mt-20 text-center text-sm text-gray-400">
-          MyPYQ by Honest
+        {/* Footer */}
+        <div className="mt-24 text-center text-sm text-gray-400 tracking-wide">
+          A Product of Honesty Software
         </div>
 
       </div>

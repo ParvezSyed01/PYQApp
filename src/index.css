@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@keyframes logoEntry {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.8); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes floatLogo {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-6px); 
+  }
+}
+
+.animate-logo {
+  animation: logoEntry 1s ease-out forwards,
+             floatLogo 3s ease-in-out 1s infinite;
+}
