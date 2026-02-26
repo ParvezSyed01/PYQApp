@@ -6,7 +6,7 @@ import About from "./pages/about";
 import Contact from "./pages/contact";
 import Papers from "./pages/paper";
 import SplashScreen from "./components/SplashScreen";
-
+import { supabase } from "./supabaseClient";
 const router = createBrowserRouter([
   {
     path: "/",

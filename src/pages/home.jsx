@@ -23,6 +23,7 @@ const academicData = {
 
 const Home = () => {
   const navigate = useNavigate();
+  
 
   const [form, setForm] = useState({
     branch: "",
@@ -390,7 +391,7 @@ const Home = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={handleSubmit}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold transition"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition"
               >
                 View Paper
               </motion.button>
